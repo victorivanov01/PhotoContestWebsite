@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Photo Contest</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <nav id="navbar">
+            
+            <!-- Burger Icon for Mobile -->
+            <div class="burger-menu">
+                <span>&#9776;</span> <!-- Burger icon symbol -->
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Home/Winners">Winners</a></li>
+                <li><a href="/Home/SubmitPicture">Submit a Picture</a></li>
+                <li class="dropdown">
+                    <a href="#">Contests</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Contest?category=landscape">Landscape Photography</a></li>
+                        <li><a href="/Home/Contest?category=nature">Nature Photography</a></li>
+                        <li><a href="/Home/Contest?category=portrait">Portrait Photography</a></li>
+                        <li><a href="/Home/Contest?category=street">Street Photography</a></li>
+                        <li><a href="/Home/Contest?category=event">Event Photography</a></li>
+                        <li><a href="/Home/Contest?category=wedding">Wedding Photography</a></li>
+                        <li><a href="/Home/Contest?category=product">Product Photography</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- About Us and Contact -->
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We are a passionate community that celebrates the beauty of photography. Join our photo contests and showcase your work!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: contact@photocontest.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+            <!-- Useful Links -->
+            <div class="footer-section">
+                <h4>Useful Links</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help</a>
+            </div>
+            <!-- Social Media Links -->
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add FontAwesome for social media icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!-- You can add FontAwesome CDN in the head of your HTML -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="/js/navbar.js"></script>
+    <script src="~/js/site.js"></script>
+
+</body>
+</html>

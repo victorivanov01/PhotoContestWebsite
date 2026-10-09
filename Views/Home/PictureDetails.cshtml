@@ -1,0 +1,70 @@
+@model PhotoContestWebsite.Models.Picture
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="picture-details-container">
+    <div class="picture-details">
+        <!-- Image Section -->
+        <div class="picture-image-container">
+            <img src="@Model.ImageUrl" alt="@Model.Title" class="photo-image" />
+        </div>
+
+        <!-- Title Section -->
+        <div class="picture-title">
+            @Model.Title
+        </div>
+
+        <!-- Information Section -->
+        <div class="picture-info">
+            <div class="picture-description-container">
+                <div class="picture-description">
+                    <strong>-</strong> @Model.Description
+                </div>
+                <div class="picture-category">
+                    <strong>-</strong> @Model.Category.Substring(0, 1).ToUpper()@Model.Category.Substring(1).ToLower()
+                </div>
+                <!-- Like Count Section -->
+                <div class="picture-likes">
+                    <strong id="likeCount">Likes: @Model.Likes</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="like-button-container">
+            <input type="hidden" id="pictureId" value="@Model.Id" />
+
+            <!-- Like Button -->
+            <button type="button" class="btn-like" id="likeButton" @(ViewData["IsContestActive"] != null && !(bool)ViewData["IsContestActive"] ? "disabled" : "")>
+                <i class="fa fa-thumbs-up"></i> Like
+            </button>
+
+            <!-- Popup message for disabled button -->
+            <div class="popup-message">
+                
+            </div>
+
+            <!-- Dynamic vote message for active button -->
+            <div id="voteMessage" style="display: none;"></div>
+        </div>
+
+
+        <!-- Share Button Section -->
+        <div class="share-button-container">
+            <button id="shareButton">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+
+        <!-- Share Options Popup -->
+        <div id="sharePopup" class="share-options-popup">
+            <div class="close-share-popup" id="closePopup">&times;</div>
+            <button class="share-option" data-platform="facebook">Facebook</button>
+            <button class="share-option" data-platform="twitter">Twitter</button>
+            <button class="share-option" data-platform="linkedin">LinkedIn</button>
+            <button class="share-option" data-platform="pinterest">Pinterest</button>
+            <button class="share-option" data-platform="reddit">Reddit</button>
+        </div>
+    </div>
+</div>

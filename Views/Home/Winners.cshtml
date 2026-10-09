@@ -1,0 +1,85 @@
+@{
+    Layout = "_Layout";  // This ensures the layout is used
+}
+
+@model List<IGrouping<string, PhotoContestWebsite.Models.Picture>>
+
+<!-- Full Width Background Image -->
+<div id="categoryBackground" class="category-banner" style="background-image: url('/images/home page images/default.jpg');"></div>
+
+<div class="gallery">
+    @foreach (var categoryGroup in Model)
+
+    {
+
+        var categoryGroupTyped = categoryGroup as IGrouping<string, PhotoContestWebsite.Models.Picture>;  // Explicitly cast
+
+
+
+        if (categoryGroupTyped != null)
+
+        {
+
+            // Ensure category title formatting
+
+            string categoryTitle = categoryGroupTyped.Key;
+
+            string formattedCategory = !string.IsNullOrEmpty(categoryTitle) && categoryTitle.EndsWith("photography", StringComparison.OrdinalIgnoreCase)
+
+            ? char.ToUpper(categoryTitle[0]) + categoryTitle.Substring(1, categoryTitle.Length - " photography".Length)
+
+            : char.ToUpper(categoryTitle[0]) + categoryTitle.Substring(1);
+
+            <div class="category">
+                <h3 class="category-title fade-element">@formattedCategory Photography</h3>
+
+                <!-- Short Description Below Category Title -->
+                <p class="category-description">
+                    @ViewData["BannerText"]  <!-- Display the description from ViewData -->
+                </p>
+
+                <!-- Check if there are winners for this category -->
+                @if (categoryGroupTyped.Any(p => p.IsWinner))
+
+                {
+                    <!-- Display images for each winner in the category -->
+                    <div class="winnerpics">
+                        @foreach (var picture in categoryGroupTyped.Where(p => p.IsWinner))
+
+                        {
+                            <div class="image-container">
+                                @if (picture.IsWinner)
+
+                                {
+                                    <div class="winner-badge">Winner</div>
+                                }
+
+                                <img src="@picture.ImageUrl" alt="@picture.Title" class="image" />
+                                <div class="image-info">
+                                    <h4>@picture.Title</h4>
+                                    @if (!string.IsNullOrEmpty(picture.Description))
+
+                                    {
+                                        <p>@picture.Description</p>
+                                    }
+                                    <div class="likes">
+                                        <i class="fas fa-thumbs-up"></i> <!-- FontAwesome Thumbs-Up Icon -->
+                                        <span>@picture.Likes Likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+                else
+
+                {
+                    <!-- If no winner, display a message -->
+                    <p class="no-winner-message">There is currently no winner, and the contest is ongoing.</p>
+                }
+            </div>
+        }
+
+    }
+</div>

@@ -1,0 +1,58 @@
+@model IEnumerable<PhotoContestWebsite.Models.Picture>
+
+@{
+    Layout = "_Layout";
+
+
+
+    string bannerImage = ViewData["BannerImage"] as string;
+
+    string bannerText = ViewData["BannerText"] as string;
+
+    string category = ViewData["Category"] as string;
+
+
+
+    // Ensure the category starts with an uppercase letter and does not repeat the word "Photography"
+
+    string formattedCategory = !string.IsNullOrEmpty(category) && category.EndsWith("photography", StringComparison.OrdinalIgnoreCase)
+
+        ? char.ToUpper(category[0]) + category.Substring(1, category.Length - " photography".Length)
+
+        : char.ToUpper(category[0]) + category.Substring(1);
+}
+
+<!-- Category Banner -->
+<div class="category-banner" style="background-image: url('@bannerImage');">
+    <div class="banner-overlay banner-text">
+        <!-- Added banner-text class -->
+        @bannerText
+    </div>
+</div>
+
+<h2 class="category-title">@formattedCategory Photography</h2>
+
+@if (Model != null && Model.Count() > 0)
+
+{
+    <div class="category-gallery">
+        @foreach (var picture in Model)
+
+        {
+            <div class="picture-item">
+                <!-- Display the image as a clickable link -->
+                <a href="@Url.Action("PictureDetails", "Home", new { id = picture.Id })">
+                    <img src="@picture.ImageUrl" alt="@picture.Title" class="photo-image" />
+                    <div class="title">@picture.Title</div> <!-- Title element -->
+                    <div class="arrow"></div> <!-- Arrow element -->
+                </a>
+            </div>
+        }
+    </div>
+}
+
+else
+
+{
+    <p>No pictures are currently available for this category.</p>
+}

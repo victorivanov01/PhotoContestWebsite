@@ -1,0 +1,217 @@
+@model IEnumerable<PhotoContestWebsite.Models.Picture>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Admin Panel</h2>
+
+<!-- Bulk Upload Form -->
+<form asp-action="UploadBulkPhotos" asp-controller="Admin" method="post" enctype="multipart/form-data" class="mb-3">
+    <div>
+        <label for="bulkCategory">Category:</label>
+        <select name="category" id="bulkCategory">
+            <option value="landscape photography">Landscape Photography</option>
+            <option value="nature photography">Nature Photography</option>
+            <option value="portrait photography">Portrait Photography</option>
+            <option value="street photography">Street Photography</option>
+            <option value="event photography">Event Photography</option>
+            <option value="wedding photography">Wedding Photography</option>
+            <option value="product photography">Product Photography</option>
+        </select>
+    </div>
+    <div>
+        <label for="imageFiles">Select Photos:</label>
+        <input type="file" name="imageFiles" id="imageFiles" multiple />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Upload Photos</button>
+</form>
+<!-- Bulk Action: Display All and Hide All -->
+<div class="button-container">
+    <button id="display-all" class="custom-btn">Display All</button>
+    <button id="hide-all" class="custom-btn">Hide All</button>
+</div>
+
+<!-- Delete All Pictures Button -->
+<form asp-action="DeleteAllPhotos" asp-controller="Admin" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete all pictures? This action cannot be undone.');">
+        Delete All Pictures
+    </button>
+</form>
+<!-- Container to center the buttons -->
+<div class="center-buttons">
+    <button id="set-winners" class="custom-btn btn-primary">Set Winners by Likes</button>
+    <button id="remove-all-winners" class="btn btn-warning custom-btn">Remove All Winners</button>
+</div>
+
+
+<!-- Submission Toggle Section -->
+<div class="submission-toggle-container mb-4">
+    <button id="toggleSubmissionButton" class="btn submission-toggle-button">
+        @(ViewData["IsSubmissionActive"] != null && (bool)ViewData["IsSubmissionActive"] ? "End Submissions" : "Start Submissions")
+    </button>
+    <span id="submissionStatus">
+        @(ViewData["IsSubmissionActive"] != null && (bool)ViewData["IsSubmissionActive"] ? "Submissions are active" : "Submissions are closed")
+    </span>
+</div>
+<!-- Contest Toggle Section -->
+<div class="toggle-container">
+    <button id="toggleContestButton" class="btn btn-warning">
+        @(ViewData["IsContestActive"] != null && (bool)ViewData["IsContestActive"] ? "End Contest" : "Start Contest")
+    </button>
+    <span id="contestStatus">
+        @(ViewData["IsContestActive"] != null && (bool)ViewData["IsContestActive"] ? "Contest is active" : "Contest has ended")
+    </span>
+</div>
+
+
+<!-- Filter Form -->
+<form method="get" action="/Admin/Index" class="mb-3">
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <div>
+            <label for="isDisplayed">Display Status:</label>
+            <select id="isDisplayed" name="isDisplayed">
+                <option value="">All</option>
+                <option value="true">Displayed</option>
+                <option value="false">Not Displayed</option>
+            </select>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="">All</option>
+                <option value="landscape photography">Landscape Photography</option>
+                <option value="nature photography">Nature Photography</option>
+                <option value="portrait photography">Portrait Photography</option>
+                <option value="street photography">Street Photography</option>
+                <option value="event photography">Event Photography</option>
+                <option value="wedding photography">Wedding Photography</option>
+                <option value="product photography">Product Photography</option>
+            </select>
+        </div>
+        <div>
+            <label for="isWinner">Winner Status:</label>
+            <select id="isWinner" name="isWinner">
+                <option value="">All</option>
+                <option value="true">Winners</option>
+                <option value="false">Non-Winners</option>
+            </select>
+        </div>
+        <div>
+            <label for="fromDate">From Date:</label>
+            <input type="date" id="fromDate" name="fromDate" />
+        </div>
+        <div>
+            <label for="toDate">To Date:</label>
+            <input type="date" id="toDate" name="toDate" />
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="sortByLikes" value="true" @(ViewContext.HttpContext.Request.Query["sortByLikes"] == "true" ? "checked" : "") />
+                Sort by Likes
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+<!-- Pictures Table -->
+<table border="1" class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Likes</th>
+            <th>Displayed</th>
+            <th>Winner</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach (var categoryGroup in Model.GroupBy(p => p.Category))
+
+    {
+        <tbody>
+            <!-- Category Header -->
+            <tr>
+                <td colspan="8" style="font-weight:bold; text-align:left; background-color:#333333; color: white;">
+                    @categoryGroup.Key
+                </td>
+            </tr>
+            <!-- Pictures in Category -->
+            @foreach (var picture in categoryGroup)
+
+            {
+                <tr data-id="@picture.Id">
+                    <td>
+                        <img src="@picture.ImageUrl" alt="@picture.Title" width="100" style="cursor:pointer;" class="clickable-image" data-src="@picture.ImageUrl" />
+                    </td>
+                    <td>
+                        <span class="view-mode">@picture.Title</span>
+                        <input type="text" class="edit-mode form-control" value="@picture.Title" style="display: none;" />
+                    </td>
+                    <td>
+                        <span class="view-mode">@picture.Description</span>
+                        <textarea class="edit-mode form-control" style="display: none;">@picture.Description</textarea>
+                    </td>
+                    <td>
+                        <span class="view-mode">@picture.Category</span>
+                        <select class="edit-mode form-select" style="display: none;">
+                            @foreach (var category in new[] {
+                    "landscape photography",
+                    "nature photography",
+                    "portrait photography",
+                    "street photography",
+                    "event photography",
+                    "wedding photography",
+                    "product photography" })
+                            {
+
+                                if (category == picture.Category)
+
+                                {
+                                    <option value="@category" selected>@category</option>
+                                }
+
+                                else
+
+                                {
+                                    <option value="@category">@category</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>@picture.Likes</td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-link toggle-display" data-id="@picture.Id">
+                            @(picture.IsDisplayed ? "Hide" : "Display")
+                        </a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-link toggle-winner" data-id="@picture.Id">
+                            @(picture.IsWinner ? "Remove Winner" : "Set as Winner")
+                        </a>
+                    </td>
+                    <td>
+                        <!-- Adjusted Buttons -->
+                        <button type="button" class="btn-edit custom-btn edit-btn">Edit</button>
+                        <button type="button" class="btn-save custom-btn save-btn" style="display: none;">Save</button>
+                        <button type="button" class="btn-cancel custom-btn cancel-btn" style="display: none;">Cancel</button>
+                        <button type="button" class="btn-delete custom-btn delete-btn">Delete</button>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+
+<script src="/js/admin-panel.js"></script>
+
+<!-- Full-Screen Image Container (Initially hidden) -->
+<div id="fullScreenContainer" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; display: none;">
+    <img id="fullScreenImage" src="" style="object-fit: contain;" />
+    <button id="closeFullScreen" style="position: absolute; top: 20px; right: 20px; background-color: red; color: white; border: none; padding: 10px;">Close</button>
+</div>

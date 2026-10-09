@@ -1,0 +1,1994 @@
+/* Global Styles */
+:root {
+    --dark-color: #121212; /* Dark background color for the site */
+    --light-color: #ffffff; /* Light color for text */
+    --accent-color: #f44336; /* Accent color for buttons or highlights */
+    --gray-color: #757575; /* Gray color for text */
+    --border-radius: 8px;
+    --transition-speed: 0.3s; /* Transition speed for smooth animations */
+    --separator-color: #444444; /* Color for separators */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-color); /* Dark background for the entire site */
+    color: var(--light-color); /* Light text color */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: var(--light-color); /* Title color */
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color); /* Accent color for links */
+    transition: color var(--transition-speed);
+}
+
+    a:hover {
+        color: #ff9800; /* Highlight color on hover */
+    }
+
+/* General Styles for the Navigation Bar */
+nav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+    z-index: 1000;
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+    position: relative;
+}
+
+    /* Navigation Menu */
+    nav ul {
+        display: flex;
+        justify-content: center; /* Center the menu items horizontally */
+        align-items: center; /* Vertically center the items */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+        /* Navigation Menu List Items */
+        nav ul li {
+            margin: 0 20px;
+            position: relative;
+        }
+
+            /* Navigation Menu Links */
+            nav ul li a {
+                color: var(--light-color); /* Light color for text */
+                font-size: 1.2rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                text-decoration: none;
+                transition: color var(--transition-speed);
+            }
+
+                nav ul li a:hover {
+                    color: var(--accent-color); /* Accent color on hover */
+                    transform: scale(1.1); /* Subtle scale effect on hover */
+                }
+
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--light-color);
+    padding-right: 20px;
+}
+
+    .burger-menu span {
+        font-size: 30px;
+        display: block;
+    }
+
+/* Mobile View - Show Burger Menu */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9); /* Darker background for mobile */
+        position: absolute;
+        top: 50px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+    nav .burger-menu {
+        display: block;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+}
+
+/* Dropdown Menu */
+nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+nav .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+    nav .dropdown-menu li {
+        margin-bottom: 10px;
+    }
+
+        nav .dropdown-menu li a {
+            font-size: 1.1rem;
+            color: var(--light-color);
+            text-transform: none;
+        }
+
+            nav .dropdown-menu li a:hover {
+                color: var(--accent-color);
+                transform: scale(1.05);
+            }
+
+/* Footer Section */
+.footer {
+    background-color: #121212; /* Dark background */
+    color: var(--light-color); /* Light text color */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px; /* Prevent sections from becoming too narrow */
+}
+
+    .footer-section h4 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--accent-color);
+    }
+
+    .footer-section p,
+    .footer-section a {
+        font-size: 1rem;
+        color: var(--light-color);
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .footer-section a:hover {
+            color: var(--accent-color); /* Accent color for hover */
+        }
+
+        /* Social Media Icons */
+        .footer-section a i {
+            margin-right: 10px;
+        }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}
+
+
+/* Container to center everything */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--dark-color); /* Ensure the container matches the dark theme */
+}
+
+/* Gallery Section */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-color); /* Dark gallery background */
+    border-radius: var(--border-radius); /* Rounded corners for the gallery */
+}
+
+/* Category Title */
+.category-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+    /* Category Separator (Line Under Title) */
+    .category-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: var(--separator-color);
+        transform: translateX(-50%);
+    }
+
+/* Grid Layout for Images */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+/* Image Container */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background-color: transparent; /* Make image container background transparent */
+    border-radius: var(--border-radius);
+    box-shadow: none; /* Remove any shadow */
+    overflow: hidden;
+    opacity: 0; /* Initially hidden for fade-in */
+    transform: translateY(30px); /* Start slightly lower */
+    animation: fadeInUp 1s 0.2s forwards; /* Fade-in with delay */
+}
+
+    /* Image Styling */
+    .image-container img {
+        width: 100%;
+        max-width: 1200px; 
+        max-height: 1200px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        transition: transform var(--transition-speed);
+    }
+
+        /* Hover effect on image only */
+        .image-container img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+/* Text Below Image (Title, Description, Likes) */
+.image-info {
+    padding: 1rem;
+    background-color: transparent; /* Remove background color */
+    color: var(--light-color); /* Light text color */
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: none; /* Remove any shadow */
+}
+
+    /* Title Styling */
+    .image-info h4 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        transition: color var(--transition-speed); /* Smooth transition on hover */
+    }
+
+    /* Description and Likes Styling */
+    .image-info p {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .image-info span {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent-color); /* Accent color for Likes */
+    }
+
+    /* Hover Effect on Text Info */
+    .image-info:hover h4 {
+        color: #ff9800; /* Highlight title on hover */
+    }
+
+/* Fade-in effect when the element comes into view */
+.image-container {
+    opacity: 0; /* Start with hidden */
+    transform: translateY(30px); /* Start lower */
+    animation: fadeInUp 1.5s forwards; /* Increased duration for fade-in */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start lower */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in the original position */
+    }
+}
+
+/* Fade-out effect when the element leaves the viewport */
+.image-container.fade-out {
+    animation: fadeOutDown 1.5s forwards; /* Increased duration for fade-out */
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0); /* Start in the original position */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(30px); /* Move downward */
+    }
+}
+
+.no-winner-message {
+    font-size: 1.2rem;
+    color: #ff9800; /* Use your desired accent color */
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/* Home Page Styles */
+/* Category Grid Styling */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 categories in the first row */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 categories per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr 1fr; /* 2 categories per row on smaller screens */
+    }
+}
+
+/* Category Styling */
+.category {
+    position: relative;
+}
+
+/* Category Image Container */
+.category-image {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height to make images taller */
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    /* Image Hover Effect */
+    .category-image:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+/* Category Text (Category Name) */
+.category-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.category-image:hover .category-text {
+    opacity: 0; /* Hide category name text on hover */
+}
+
+/* Overlay with "See Gallery" */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.category-image:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.overlay h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Fade-in effect when the element comes into view */
+.image-container {
+    opacity: 0; /* Start with hidden */
+    transform: translateY(30px); /* Start lower */
+    animation: fadeInUp 1.5s forwards; /* Increased duration for fade-in */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start lower */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in the original position */
+    }
+}
+
+/* Fade-out effect when the element leaves the viewport */
+.image-container.fade-out {
+    animation: fadeOutDown 1.5s forwards; /* Increased duration for fade-out */
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0); /* Start in the original position */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(30px); /* Move downward */
+    }
+}
+
+/* About Photo Contests Section */
+.about-contests {
+    background-color: var(--dark-color); /* Dark background for consistency */
+    color: var(--light-color); /* Light text color for readability */
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    border-radius: var(--border-radius);
+}
+
+    .about-contests h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--accent-color); /* Accent color for the title */
+    }
+
+    .about-contests p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: var(--gray-color); /* Slightly lighter color for paragraph text */
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .about-contests h2 {
+        font-size: 2rem;
+    }
+
+    .about-contests p {
+        font-size: 1rem;
+    }
+}
+
+/* Admin Panel Styling */
+body {
+    background-color: #121212; /* Dark background for the entire site */
+    color: #ffffff; /* Light color for text */
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    color: #f44336; /* Accent color for the admin header */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
+form {
+    background-color: #222; /* Dark background for forms */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+    form input, form select, form textarea {
+        background-color: #333; /* Dark input fields */
+        color: #fff; /* Light text in the fields */
+        border: 1px solid #444; /* Dark borders */
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    form textarea {
+        min-height: 150px; /* Makes the description textarea longer */
+    }
+
+    /* Buttons */
+    form button {
+        background-color: #f44336; /* Red button background */
+        color: #fff; /* White text on buttons */
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        margin-top: 10px; /* Adds a little space between buttons */
+    }
+
+        form button:hover {
+            background-color: #ff9800; /* Accent color on hover */
+        }
+
+/* Table Styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #444; /* Dark borders for the table */
+    background-color: #333; /* Dark background for cells */
+    color: #fff; /* Light text */
+}
+
+th {
+    background-color: #444; /* Slightly lighter background for header */
+}
+
+td input[type="text"], td textarea {
+    background-color: #333; /* Dark background for inputs in table */
+    color: #fff;
+    border: 1px solid #444; /* Dark borders */
+    padding: 8px;
+}
+
+td textarea {
+    min-height: 120px; /* A little longer for description */
+}
+
+/* Flexbox for Buttons */
+td form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allows buttons to wrap into the next row if needed */
+    justify-content: center; /* Centers the buttons */
+}
+
+/* Button Styles */
+button.btn-danger {
+    background-color: #f44336;
+    color: #fff;
+}
+
+button.btn-primary {
+    background-color: #f44336;
+    color: #fff;
+}
+
+button.btn:hover {
+    opacity: 0.8;
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Links and Buttons */
+a.btn {
+    color: #fff;
+    text-decoration: none;
+}
+
+    a.btn:hover {
+        color: #ff9800; /* Accent color for links */
+    }
+
+/* Submit Form Page */
+.submit-form {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-left {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #1e1e1e; /* Dark background for form */
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+    .form-left label {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        display: block;
+        color: white;
+    }
+
+    .form-left input,
+    .form-left select,
+    .form-left textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #333;
+        color: white;
+        font-size: 1rem;
+        box-sizing: border-box; /* Ensure input doesn't overflow */
+    }
+
+        .form-left input[type="file"] {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            box-sizing: border-box; /* Ensure file input doesn't overflow */
+        }
+
+            .form-left input[type="file"]:hover {
+                background-color: #444;
+            }
+
+    .form-left button {
+        width: 100%;
+        padding: 12px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .form-left button:hover {
+            background-color: #ff9800; /* Hover effect */
+        }
+
+.form-right {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center the image */
+    position: relative;
+    top: 50px; /* Move the image a bit lower */
+}
+
+.form-image {
+    width: 100%;
+    max-width: 1000px; /* Increased image size */
+    object-fit: cover; /* Maintain aspect ratio and cover the space */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow for modern touch */
+}
+
+/* Text Section Below Image */
+.text-below-image {
+    color: var(--light-color); /* Light text color for readability */
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: var(--border-radius); /* Rounded corners */
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .text-below-image h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--accent-color); /* Accent color for the title */
+    }
+
+    .text-below-image p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: var(--gray-color); /* Slightly lighter color for paragraph text */
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+/* Mobile Responsive */
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .submit-form {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .form-left, .form-right {
+        max-width: 100%;
+        width: 100%; /* Ensure the form sections take full width */
+    }
+
+        .form-left input,
+        .form-left select,
+        .form-left textarea,
+        .form-right .form-image {
+            width: 100%; /* Ensure form fields take full width */
+            margin-bottom: 15px; /* Add space between form fields */
+        }
+
+        .form-left button {
+            width: 100%; /* Make the button span full width */
+            margin-top: 15px; /* Space above the button */
+        }
+
+    .form-image {
+        max-width: 100%; /* Make sure the image is fully responsive */
+        height: auto; /* Adjust height accordingly */
+    }
+
+        .form-image img {
+            width: 100%; /* Image will take up full width */
+            object-fit: cover; /* Ensure image maintains aspect ratio */
+        }
+
+    .form-left label {
+        font-size: 1rem; /* Make labels smaller for mobile */
+    }
+}
+
+
+/* Custom file input button */
+input[type="file"] {
+    background-color: var(--dark-color); /* Dark background color */
+    color: var(--light-color); /* Light text color */
+    border: 1px solid var(--separator-color); /* Border to match the rest of the design */
+    border-radius: var(--border-radius); /* Rounded corners */
+    padding: 10px; /* Padding for better visual balance */
+    font-size: 1rem; /* Font size to match the form inputs */
+    width: 100%; /* Make the file input span the entire width of the form */
+    cursor: pointer;
+    display: inline-block; /* Display as inline-block */
+}
+
+    input[type="file"]::-webkit-file-upload-button {
+        background-color: var(--accent-color); /* Accent color for the file button */
+        color: var(--light-color); /* Text color */
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: var(--border-radius);
+    }
+
+    input[type="file"]:hover::-webkit-file-upload-button {
+        background-color: #ff9800; /* Highlight color on hover */
+    }
+
+/* Prevent textarea from being resized */
+textarea {
+    resize: none; /* Disable resizing */
+}
+
+
+/* Style for the enlarged image container */
+#enlargedImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Make sure it overlays on top */
+}
+
+#enlargedImageContainer img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+/* Close button for the enlarged image */
+#closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+#closeButton:hover {
+    background-color: #d32f2f;
+}
+
+/* Category Title */
+.category-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+/* Gallery Styles */
+.category-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 20px; /* Increased gap for better spacing between images */
+    margin: 0 auto;
+    max-width: 2000px; /* Increased max width for a larger layout */
+    padding: 0 10px; /* Padding to add some space around the grid */
+}
+
+/* Picture Item Styles */
+.picture-item {
+    position: relative; /* Necessary for absolute positioning of the title */
+    background-color: var(--dark-color); /* Dark background for image card */
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 900px; /* Fixed height for consistency */
+}
+
+/* Photo Image Styles */
+.photo-image {
+    width: 100%; /* Make the image fill the width */
+    height: 100%; /* Ensure the image fills the height */
+    object-fit: cover; /* Ensure the image covers the container while preserving its aspect ratio */
+    border-radius: 8px;
+}
+
+/* Title Text Styles (hidden initially) */
+.title {
+    position: absolute;
+    bottom: 10px; /* Position the title at the top */
+    right: 10px; /* Position the title on the left side */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0; /* Initially invisible */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for the fade-in effect */
+    z-index: 10; /* Ensure the title is above the image */
+}
+
+/* Show the title when hovering */
+.picture-item:hover .title {
+    opacity: 1;
+}
+
+/* Optional Hover Effect: Make image slightly transparent on hover */
+.picture-item:hover .photo-image {
+    opacity: 0.7; /* Slight transparency */
+}
+
+/* Add Arrow on Hover */
+.picture-item .arrow {
+    position: absolute;
+    bottom: 20px; /* Position it 20px from the bottom */
+    left: 20px; /* Position it 20px from the left */
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--accent-color); /* Larger arrow body */
+    border-top: 10px solid transparent; /* Larger top triangle */
+    border-bottom: 10px solid transparent; /* Larger bottom triangle */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for fading in */
+    cursor: pointer; /* Makes the arrow act as a pointer when hovered */
+}
+
+/* Show the arrow when hovering over the picture item */
+.picture-item:hover .arrow {
+    opacity: 1; /* Make it visible */
+}
+
+
+
+/* Handle case when no images are available */
+.category-gallery p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--light-color);
+}
+
+
+/* Category Banner */
+.category-banner {
+    position: relative;
+    height: 650px; /* Adjust height for larger banner */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Prevent any content from overflowing */
+}
+
+    /* Gradient Fade Effect from Bottom */
+    .category-banner::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1.0) 100%); /* Stronger fade */
+        z-index: 1;
+    }
+
+/* Banner Text */
+.banner-overlay {
+    position: absolute;
+    bottom: 30px; /* Positioning the text a bit lower */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 2;
+    font-size: 2.5rem; /* Increase the size of the text */
+    font-weight: bold;
+    width: 90%; /* Make text fit */
+    text-align: center; /* Center the text */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); /* Subtle text shadow for contrast */
+}
+
+    /* New Class for Text Color */
+    .banner-overlay.banner-text {
+        color: #ffffff; /* Change this to the color you want */
+        font-size: 2.0rem; /* Adjust the font size to make the text smaller */
+    }
+
+
+/* Ensure no hover effect on the banner */
+.category-banner:hover {
+    opacity: 1;
+}
+
+
+/* Picture Details Page Specific Styles */
+.picture-details-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.picture-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background-color: var(--dark-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    color: var(--light-color);
+}
+
+.picture-image-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+    .picture-image-container img {
+        width: 100%; /* Ensure the image fills the container width */
+        height: auto; /* Maintain the aspect ratio */
+        max-width: 1000px; /* Maximum width to avoid overly large images */
+        max-height: 800px; /* Maximum height to keep the image within a manageable size */
+        border-radius: var(--border-radius);
+        object-fit: cover; /* Maintain aspect ratio while covering the container */
+    }
+
+
+.picture-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.picture-info {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.picture-description-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.picture-description,
+.picture-category,
+.picture-likes {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Ensure the form and its container have no background */
+.like-button-container {
+    display: flex;
+    justify-content: flex-start; /* Align button to the left */
+    margin-top: 10px; /* Space between description and button */
+    width: 100%;
+    background: none; /* No background for the container */
+    padding: 0; /* Remove padding */
+}
+
+    /* Ensure the form has no background either */
+    .like-button-container form {
+        background: none; /* Remove background from the form */
+        margin: 0; /* Remove margin */
+        padding: 0; /* Remove padding */
+    }
+
+/* Button with no background and only a border */
+.btn-like {
+    background: none; /* Remove button background */
+    border: 2px solid var(--accent-color); /* Accent border */
+    color: var(--accent-color); /* Accent color for text */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: none; /* No uppercase text */
+    box-shadow: none; /* Remove any shadow or background */
+}
+
+    /* Hover effect for the button */
+    .btn-like:hover {
+        background-color: var(--accent-color); /* Accent background on hover */
+        color: var(--light-color); /* Change text color to light on hover */
+    }
+
+    /* Icon style inside the button */
+    .btn-like i {
+        font-size: 1.5rem; /* Larger thumbs-up icon */
+    }
+
+
+@media (max-width: 768px) {
+    .picture-details {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .picture-info {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .like-button-container {
+        margin-top: 10px;
+        justify-content: center; /* Center button on mobile */
+    }
+}
+
+/* Share Button Styling */
+.share-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    width: 100%;
+    padding: 0;
+}
+
+    .share-button-container button {
+        background-color: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .share-button-container button:hover {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        .share-button-container button i {
+            font-size: 1.4rem;
+        }
+
+/* Popup Styling */
+.share-options-popup {
+    display: none;
+    position: absolute;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+    .share-options-popup button {
+        background-color: transparent;
+        color: var(--accent-color);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--accent-color);
+        transition: background-color 0.3s ease;
+    }
+
+        .share-options-popup button:hover {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+/* Close button for the popup */
+.close-share-popup {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Category Banner */
+.category-banner {
+    position: relative;
+    height: 650px; /* Adjust height for larger banner */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Prevent any content from overflowing */
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 2.5rem;
+    font-weight: bold;
+    width: 90%;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); /* Subtle text shadow for contrast */
+    color: #ffffff;
+}
+
+/* Category Title */
+.category-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+    .category-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: var(--separator-color);
+        transform: translateX(-50%);
+    }
+
+/* Gallery Section */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-color); /* Dark gallery background */
+    border-radius: var(--border-radius); /* Rounded corners for the gallery */
+}
+
+/* Image Grid and Containers */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* Increase the size of each image */
+    gap: 2rem;
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+/* New Class for Winner Pics */
+.winnerpics .image-container {
+    display: flex;
+    flex-direction: column; /* Align the image and text vertically */
+    justify-content: flex-start; /* Align text to the top */
+    align-items: flex-start; /* Align text to the left of the image */
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Larger image size */
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    box-shadow: none;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+    .winnerpics .image-container img {
+        width: 100%; /* Make the image larger by setting the width to 100% */
+        height: auto; /* Allow the height to adjust for the larger image */
+        object-fit: cover; /* Ensure image covers the container */
+        border-radius: var(--border-radius);
+        transition: transform var(--transition-speed);
+    }
+
+        .winnerpics .image-container img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+/* Text Below Image (Title, Description, Likes) */
+.winnerpics .image-info {
+    padding: 1rem;
+    background-color: transparent;
+    color: var(--light-color);
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Make the text container full width */
+    margin-top: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+}
+
+    .winnerpics .image-info h4 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        transition: color var(--transition-speed); /* Smooth transition on hover */
+    }
+
+    .winnerpics .image-info p {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .winnerpics .image-info span {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent-color); /* Accent color for Likes */
+    }
+
+    .winnerpics .image-info:hover h4 {
+        color: #ff9800; /* Highlight title on hover */
+    }
+.winnerpics .likes {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+    .winnerpics .likes i {
+        margin-right: 5px; /* Space between the icon and the number */
+        color: var(--accent-color); /* Color of the like icon */
+    }
+/* Fade-in effect when the element comes into view */
+.winnerpics .image-container {
+    opacity: 0; /* Start with hidden */
+    transform: translateY(30px); /* Start lower */
+    animation: fadeInUp 1.5s forwards; /* Increased duration for fade-in */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start lower */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in the original position */
+    }
+}
+
+/* Fade-out effect when the element leaves the viewport */
+.winnerpics .image-container.fade-out {
+    animation: fadeOutDown 1.5s forwards; /* Increased duration for fade-out */
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0); /* Start in the original position */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(30px); /* Move downward */
+    }
+}
+
+.no-winner-message {
+    font-size: 1.2rem;
+    color: #ff9800; /* Use your desired accent color */
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Category Grid Styling */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 categories in the first row */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 categories per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr 1fr; /* 2 categories per row on smaller screens */
+    }
+}
+
+/* Category Styling */
+.category {
+    position: relative;
+}
+
+/* Category Image Container */
+.category-image {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height to make images taller */
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    .category-image:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+/* Category Text (Category Name) */
+.category-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.category-image:hover .category-text {
+    opacity: 0; /* Hide category name text on hover */
+}
+
+/* Overlay with "See Gallery" */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.category-image:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.overlay h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* About Photo Contests Section */
+.about-contests {
+    background-color: var(--dark-color); /* Dark background for consistency */
+    color: var(--light-color); /* Light text color for readability */
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    border-radius: var(--border-radius);
+}
+
+    .about-contests h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--accent-color); /* Accent color for the title */
+    }
+
+    .about-contests p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: var(--gray-color); /* Slightly lighter color for paragraph text */
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .about-contests h2 {
+        font-size: 2rem;
+    }
+
+    .about-contests p {
+        font-size: 1rem;
+    }
+}
+
+
+.winner-badge {
+    position: absolute;
+    top: 10px; /* Adjust this value to move the badge down */
+    left: 10px; /* Adjust this value to move the badge right */
+    background-color: #f44336;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+
+/* Success Message Styling */
+#voteMessage.success {
+    background-color: #4CAF50; /* Green background for success */
+    color: #fff; /* White text */
+    border-radius: var(--border-radius); /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the message */
+    margin-top: 10px; /* Space above the message */
+    font-size: 1rem; /* Font size for the message */
+    display: inline-block; /* Ensure proper inline-block display */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 3s; /* Fade-in and fade-out animations */
+}
+
+/* Error Message Styling */
+#voteMessage.error {
+    background-color: #f44336; /* Red background for error */
+    color: #fff; /* White text */
+    border-radius: var(--border-radius); /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the message */
+    margin-top: 10px; /* Space above the message */
+    font-size: 1rem; /* Font size for the message */
+    display: inline-block; /* Ensure proper inline-block display */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 3s; /* Fade-in and fade-out animations */
+}
+
+/* Animations for messages */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px); /* Slightly above the final position */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Back to original position */
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0); /* Original position */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px); /* Slightly above the final position */
+    }
+}
+
+.custom-success-popup {
+    position: absolute; /* Position relative to the submit button */
+    bottom: -60px; /* Adjust to appear below the button */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: var(--accent-color); /* Use the site's accent color */
+    color: var(--light-color); /* Use the site's light text color */
+    padding: 10px 20px;
+    border-radius: var(--border-radius); /* Match your theme's border radius */
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeInOut 5s ease-in-out; /* Smooth fade-in and fade-out effect */
+}
+
+/* Smooth fade-in and fade-out animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+
+/* Common Button Styling */
+.custom-btn {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+    /* Hover Effect */
+    .custom-btn:hover {
+        background-color: #ff9800; /* Highlight color */
+        color: var(--dark-color);
+    }
+
+/* Specific Button Variants */
+.btn-edit {
+    background-color: var(--accent-color); /* Default red for edit */
+}
+
+.btn-save {
+    background-color: green; /* Save button green */
+}
+
+.btn-cancel {
+    background-color: gray; /* Cancel button gray */
+}
+
+.btn-delete {
+    background-color: #f44336; /* Delete button red */
+}
+
+/* Hover Effects for Specific Buttons */
+.btn-save:hover {
+    background-color: #28a745;
+}
+
+.btn-cancel:hover {
+    background-color: #6c757d;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+/* Dropdown and Textarea Styling */
+.edit-mode.form-select,
+.edit-mode.form-control {
+    width: 100%; /* Full width to align with the table column */
+    border: 1px solid var(--separator-color); /* Match your theme */
+    border-radius: var(--border-radius);
+    background-color: #222; /* Dark background */
+    color: var(--light-color); /* Light text */
+    padding: 8px; /* Padding for consistency */
+    font-size: 1rem;
+}
+
+/* Ensuring Textarea Matches Row Height */
+textarea.edit-mode.form-control {
+    height: auto; /* Adjust height dynamically */
+    min-height: 80px; /* Minimum height to match the row size */
+    resize: vertical; /* Allow resizing if needed */
+}
+
+
+/* Optional: Add custom spacing or alignment for buttons */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 10px; /* Consistent spacing between buttons */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Display All and Hide All Buttons */
+#display-all,
+#hide-all {
+    background-color: var(--accent-color); /* Matches the primary button color */
+    color: var(--light-color); /* Light text */
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius); /* Match the border radius */
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    margin-right: 10px; /* Spacing between buttons */
+}
+
+    /* Hover Effects for Display All and Hide All Buttons */
+    #display-all:hover {
+        background-color: #28a745; /* Green hover for Display All */
+        color: var(--light-color); /* Maintain light text */
+    }
+
+    #hide-all:hover {
+        background-color: #ff9800; /* Red hover for Hide All */
+        color: var(--light-color); /* Maintain light text */
+    }
+
+    /* Active State for Display All and Hide All Buttons */
+    #display-all:active,
+    #hide-all:active {
+        transform: translateY(1px); /* Slight button press effect */
+    }
+
+    /* Focus State for Accessibility */
+    #display-all:focus,
+    #hide-all:focus {
+        outline: 2px solid #ffc107; /* Yellow outline for focus */
+        outline-offset: 2px;
+    }
+
+/* Set Winners Button Styling */
+#set-winners {
+    background-color: #007bff; /* Blue for Set Winners button */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+    #set-winners:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    #set-winners:active {
+        transform: translateY(1px); /* Button press effect */
+    }
+
+/* Remove All Winners Button Styling */
+#remove-all-winners {
+    background-color: #ff5722; /* Bright orange color */
+    color: white;
+}
+
+    #remove-all-winners:hover {
+        background-color: #e64a19; /* Darker orange on hover */
+        color: #f0f0f0;
+    }
+
+/* Container to center the button and status */
+.toggle-container {
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Aligns the content vertically */
+    gap: 10px; /* Adds space between the button and status text */
+    margin-top: 20px; /* Optional: Adjust the top margin */
+}
+
+/* Button Styling */
+#toggleContestButton {
+    background-color: var(--accent-color); /* Matches the primary button color */
+    color: var(--light-color); /* Light text */
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius); /* Rounded corners */
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+#toggleContestButton:hover {
+    background-color: #ff9800; /* Highlight color on hover */
+    color: var(--dark-color); /* Text color on hover */
+}
+
+/* Status Text Styling */
+#contestStatus {
+    font-size: 1rem; /* Adjust font size */
+    font-weight: bold; /* Make it stand out */
+    color: var(--light-color); /* Match the text color to the site's theme */
+}
+
+
+
+/* Centering the container that holds the buttons */
+.submission-toggle-container, .contest-toggle-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the buttons vertically */
+    margin-top: 20px; /* Optional: Adds some space at the top */
+}
+
+/* Button Styling */
+button.submission-toggle-button, button#toggleContestButton {
+    background-color: var(--accent-color); /* Matches the primary button color */
+    color: var(--light-color); /* Light text */
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius); /* Rounded corners */
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    margin-right: 10px; /* Space between button and status text */
+    margin-left: 20px;
+}
+
+    button.submission-toggle-button:hover, button#toggleContestButton:hover {
+        background-color: #ff9800; /* Highlight color on hover */
+        color: var(--dark-color); /* Text color on hover */
+    }
+
+/* Status Text Styling */
+#contestStatus, #submissionStatus {
+    font-size: 1rem; /* Adjust font size */
+    font-weight: bold; /* Make it stand out */
+    color: var(--light-color); /* Match the text color to the site's theme */
+    display: inline-block;
+    vertical-align: middle; /* Align with the button */
+    margin-left: 10px; /* Optional: Adds some space between the button and the status text */
+}
+
+/* Centering the container that holds the buttons */
+.center-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Aligns the buttons vertically */
+    gap: 10px; /* Adds space between the buttons */
+    margin-top: 20px; /* Optional: Adds space at the top */
+    margin-bottom: 20px; /* Optional: Adds space at the bottom */
+    width: 100%; /* Ensures the container spans the full width */
+    text-align: center; /* Centers the content in case flexbox doesn't work due to other styles */
+}
+
+/* Set Winners Button Styling */
+#set-winners {
+    background-color: #007bff; /* Blue for Set Winners button */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+    #set-winners:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    #set-winners:active {
+        transform: translateY(1px); /* Button press effect */
+    }
+
+/* Remove All Winners Button Styling */
+#remove-all-winners {
+    background-color: #ff5722; /* Bright orange color */
+    color: white;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+    #remove-all-winners:hover {
+        background-color: #e64a19; /* Darker orange on hover */
+        color: #f0f0f0;
+    }
+
+    #remove-all-winners:active {
+        transform: translateY(1px); /* Button press effect */
+    }
+
+
+/* Full-Screen Image Container */
+#fullScreenContainer {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000;
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    overflow: auto; /* Allows scrolling if the image is too large */
+}
+
+/* Full-Screen Image */
+#fullScreenImage {
+    object-fit: contain; /* Ensures the image retains its aspect ratio */
+    width: auto; /* Don't scale the image width */
+    height: auto; /* Don't scale the image height */
+    max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+    max-height: 100%; /* Ensure the image doesn't exceed the viewport height */
+}
+
+/* Close button styling */
+#closeFullScreen {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+    #closeFullScreen:hover {
+        background-color: darkred;
+    }
+
+/* Button styling for clickable images (optional) */
+.clickable-image {
+    cursor: pointer; /* Show pointer cursor on hover over the image */
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+    .clickable-image:hover {
+        opacity: 0.7; /* Change opacity on hover */
+    }

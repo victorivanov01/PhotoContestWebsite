@@ -1,0 +1,40 @@
+<div id="categoryBackground" class="category-banner" style="background-image: url('/images/home page images/default.jpg');"></div>
+
+<!-- Submission Form -->
+<form id="submissionForm" class="submit-form" enctype="multipart/form-data">
+    <div class="form-left">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="Title" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="Description" required></textarea>
+
+        <label for="category">Category:</label>
+        <select id="category" name="Category">
+            <option value="landscape">Landscape Photography</option>
+            <option value="nature">Nature Photography</option>
+            <option value="portrait">Portrait Photography</option>
+            <option value="street">Street Photography</option>
+            <option value="event">Event Photography</option>
+            <option value="wedding">Wedding Photography</option>
+            <option value="product">Product Photography</option>
+        </select>
+
+        <label for="imageFile">Upload Image:</label>
+        <input type="file" id="imageFile" name="imageFile" required />
+
+        <button type="submit" id="submitButton">Submit</button>
+
+        <div id="errorMessage" style="display: none; color: red; margin-top: 10px;"></div>
+    </div>
+
+    <div class="form-right">
+        <div id="imagePreviewContainer" style="display: none; margin-top: 10px;">
+            <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 100%; border-radius: 10px;" />
+        </div>
+        <div class="text-below-image">
+            <h3>Submit Your Best Work</h3>
+            <p>Show us your creativity! Capture moments that tell a story, showcase your skills, and share your passion for photography. Add a title and description to your submission, select the right category, and don't forget to have fun. We can't wait to see your work!</p>
+        </div>
+    </div>
+</form>
